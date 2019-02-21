@@ -69,6 +69,8 @@ class EncryptAndZip
     private function encrypt($content)
     {
         $content = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', $content);
+        $xml = $content;
+        /*
         $xml = "<eFinanceira "
             . "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" "
             . "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
@@ -81,7 +83,7 @@ class EncryptAndZip
         $xml .= "</evento>";
         $xml .= "</loteEventos>";
         $xml .= "</eFinanceira>";
-
+        */
         $cer = file_get_contents(realpath(__DIR__.'/../vendor/nfephp-org/sped-efinanceira/storage/efinanc_web.cer'));
         $crypt = new Crypto($cer);
         $resp = $crypt->certificateInfo();
