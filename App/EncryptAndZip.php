@@ -82,7 +82,8 @@ class EncryptAndZip
         $xml .= "</loteEventos>";
         $xml .= "</eFinanceira>";
 
-        $crypt = new Crypto(file_get_contents(realpath(__DIR__.'/efinanc_web.cer')));
+        $cer = file_get_contents(realpath(__DIR__.'/../vendor/nfephp-org/sped-efinanceira/storage/efinanc_web.cer'));
+        $crypt = new Crypto($cer);
         $resp = $crypt->certificateInfo();
         $id = 1;// round(microtime(true) * 1000);
         $key = $crypt->getEncrypedKey();
